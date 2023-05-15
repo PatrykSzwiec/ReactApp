@@ -32,3 +32,9 @@
     margin: 0 0 36px;
     text-align: center;
 }
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
