@@ -9,13 +9,12 @@ const ColumnForm = props => {
 
   const handleSubmit = e => {
       e.preventDefault();
-      props.action({title: title, icon: icon });
-      setTitle('');
+      props.action({title: title, icon: icon });// Call function from props that will add new column for column array at app.js
       setIcon('');
   }
 
 return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.columnForm}>
           <span className={styles.inputText}>Title:</span>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)} className={styles.inputStyle} />
 

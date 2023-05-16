@@ -13,3 +13,9 @@
 .inputText {
   padding: 10px;
 }
+
+@media (max-width: 670px) {
+  .columnForm {
+    flex-direction: column;
+  }
+}
