@@ -11,6 +11,7 @@ const ColumnForm = props => {
       e.preventDefault();
       props.action({title: title, icon: icon });
       setIcon('');
+      setTitle('');
   }
 
 return (
