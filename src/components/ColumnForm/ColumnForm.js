@@ -9,7 +9,7 @@ const ColumnForm = props => {
 
   const handleSubmit = e => {
       e.preventDefault();
-      props.action({title: title, icon: icon });// Call function from props that will add new column for column array at app.js
+      props.action({title: title, icon: icon });
       setIcon('');
   }
 
