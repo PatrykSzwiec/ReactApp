@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './ColumnForm.module.scss';
 import Button from '../Button/Button';
+import { addColumn } from '../../redux/store';
 
 const ColumnForm = props => {
 
@@ -12,7 +13,7 @@ const ColumnForm = props => {
 
   const handleSubmit = e => {
       e.preventDefault();
-      dispatch({ type: 'ADD_COLUMN' , payload: { title, icon } });
+      dispatch(addColumn({ title, icon }));
       setIcon('');
       setTitle('');
       console.log("add new column");
