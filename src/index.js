@@ -7,6 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store'
 import App from './App';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas);
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
