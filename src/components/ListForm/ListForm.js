@@ -1,9 +1,10 @@
 import styles from '../ListForm/ListForm.module.scss';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button.js';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addList } from '../../redux/store';
+import { addList } from '../../redux/listsRedux';
 
 const ListForm = () => {
 
