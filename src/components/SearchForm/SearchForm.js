@@ -1,4 +1,5 @@
 import styles from './SearchForm.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 
@@ -25,7 +26,7 @@ const SearchForm = () => {
         value={searchString}
         onChange={e => setSearchString(e.target.value)} />
       <Button>
-        <span className="fa fa-search" />
+      <FontAwesomeIcon icon={['fas', 'search']}/>
       </Button>
     </form>
   );

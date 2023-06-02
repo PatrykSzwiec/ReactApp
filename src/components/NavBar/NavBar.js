@@ -1,4 +1,5 @@
 import styles from './NavBar.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from "../Container/Container";
 
 import { NavLink } from 'react-router-dom';
@@ -10,7 +11,7 @@ const NavBar = () => {
         <div className={styles.navWrapper}>
           <div className={styles.navIcon}>
             <a href='/'>
-              <span className='fa fa-tasks'></span>
+              <FontAwesomeIcon className={styles.navIconTask} icon={['fas', 'list-check']}/>
             </a>
           </div>
           <div className={styles.navLinks}>

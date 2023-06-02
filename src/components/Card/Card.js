@@ -2,6 +2,7 @@ import styles from './Card.module.scss';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { favoriteCardToggler, removeCard } from '../../redux/cardsRedux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Card = props => {
 
@@ -22,10 +23,10 @@ const Card = props => {
     <li className={styles.card}>{props.title}
       <div className={styles.buttons}>
           <button onClick={handleClick} className={clsx(styles.button, props.isFavorite && styles.isActive)}>
-            <i className='fa fa-star-o'/>
+            <FontAwesomeIcon icon={['fas', 'star']}/>
           </button>
           <button onClick={removeClick} className={styles.activeButton}>
-            <i className='fa fa-trash' />
+            <FontAwesomeIcon icon={['fas', 'trash']}/>
           </button>
       </div>
     </li>

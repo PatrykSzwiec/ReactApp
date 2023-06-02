@@ -11,4 +11,8 @@
   padding: ($base-size * 1.5);
   border-radius: $radius;
   color: $color-dark;
+
+  ul {
+    padding:0;
+  }
 }
