@@ -12,22 +12,22 @@ const SearchForm = () => {
 
   const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(updateSearchString(searchString));
-        setSearchString('');
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateSearchString(searchString));
+    setSearchString('');
+  };
 
   return (
-      <form className={styles.searchForm} onSubmit={handleSubmit}>
-          <TextInput
-            type="text"
-            value={searchString}
-            onChange={e => setSearchString(e.target.value)} />
-          <Button>
-            <span className="fa fa-search" />
-          </Button>
-      </form>
+    <form className={styles.searchForm} onSubmit={handleSubmit}>
+      <TextInput
+        type="text"
+        value={searchString}
+        onChange={e => setSearchString(e.target.value)} />
+      <Button>
+        <span className="fa fa-search" />
+      </Button>
+    </form>
   );
 };
 

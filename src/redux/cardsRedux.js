@@ -18,14 +18,14 @@ export const removeCard = payload => ({ type: REMOVE_CARD, payload });
 
 const cardsReducer = (statePart = [], action) => {
     switch (action.type) {
-        case ADD_CARD:
-            return [...statePart, { ...action.payload, id: shortid() }];
-        case FAVORITE_CARD_TOGGLER:
-            return statePart.map(card => (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card);
-        case REMOVE_CARD:
-            return [...statePart.filter(card => card.id !== action.payload)];
-            default:
-            return statePart;
+    case ADD_CARD:
+      return [...statePart, { ...action.payload, id: shortid() }];
+    case FAVORITE_CARD_TOGGLER:
+      return statePart.map(card => (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card);
+    case REMOVE_CARD:
+      return [...statePart.filter(card => card.id !== action.payload)];
+    default:
+      return statePart;
     }
 }
 

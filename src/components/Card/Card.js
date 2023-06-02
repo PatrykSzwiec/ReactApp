@@ -8,8 +8,8 @@ const Card = props => {
   const dispatch = useDispatch();
 
     const handleClick = e => {
-        e.preventDefault();
-        dispatch(favoriteCardToggler(props.id))
+      e.preventDefault();
+      dispatch(favoriteCardToggler(props.id))
     }
 
     const removeClick = e => {
@@ -21,12 +21,12 @@ const Card = props => {
   return (
     <li className={styles.card}>{props.title}
       <div className={styles.buttons}>
-            <button onClick={handleClick} className={clsx(styles.button, props.isFavorite && styles.isActive)}>
-              <i className={'fa fa-star-o'} />
-            </button>
-            <button onClick={removeClick} className={styles.activeButton}>
-              <i className={'fa fa-trash'} />
-            </button>
+          <button onClick={handleClick} className={clsx(styles.button, props.isFavorite && styles.isActive)}>
+            <i className='fa fa-star-o'/>
+          </button>
+          <button onClick={removeClick} className={styles.activeButton}>
+            <i className='fa fa-trash' />
+          </button>
       </div>
     </li>
   );

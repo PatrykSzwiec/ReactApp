@@ -9,11 +9,11 @@ const Favorite = () => {
 
   const favoriteCards = useSelector(getFavoriteCard);
   if (favoriteCards.length === 0) {
-      return (
-          <div>
-              <PageTitle>Ups! No favorite cards yet</PageTitle>
-          </div>
-      );
+    return (
+      <div>
+        <PageTitle>Ups! No favorite cards yet</PageTitle>
+      </div>
+    );
   }
 
   return (
@@ -21,7 +21,10 @@ const Favorite = () => {
       <PageTitle>favorite cards</PageTitle>
         <div className={styles.container}>
           <ul className={styles.favoriteCards}>
-              {favoriteCards.map(card => <Card key={card.id} title={card.title} isFavorite={card.isFavorite} />)}
+            {favoriteCards.map(card => <Card
+              key={card.id}
+              title={card.title}
+              isFavorite={card.isFavorite} />)}
           </ul>
         </div>
     </div>

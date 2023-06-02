@@ -12,26 +12,21 @@ const CardForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        // Check if the title is empty
-        if (title.trim() === '') {
-            return; // Do nothing if the title is empty
-        }
-
         dispatch(addCard({columnId: props.columnId, title}));
         setTitle('');
     };
 
 	return (
-        <form className={styles.CardForm} onSubmit={handleSubmit}>
-            <TextInput className={styles.CardFormInput}
-                type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Enter card title"
-            />
-            <Button className={styles.CardFormButton}>Add card</Button>
-        </form>
+    <form className={styles.CardForm} onSubmit={handleSubmit}>
+      <TextInput className={styles.CardFormInput}
+        type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        placeholder="Enter card title"
+        required
+      />
+      <Button className={styles.CardFormButton}>Add card</Button>
+    </form>
 	);
 };
 

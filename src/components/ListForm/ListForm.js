@@ -8,33 +8,37 @@ import { addList } from '../../redux/listsRedux';
 
 const ListForm = () => {
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleSubmit = e => {
-        e.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(addList({ title, description }));
+    setTitle('');
+    setDescription('');
+  };
 
-        // Check if the title is empty
-        if (title.trim() === '') {
-            return; // Do nothing if the title is empty
-        }
+  return (
+    <form className={styles.listForm} onSubmit={handleSubmit}>
+      <span className={styles.inputText}>Title:</span>
+      <TextInput
+        type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        required>
+      </TextInput>
 
-        dispatch(addList({ title, description }));
-        setTitle('');
-        setDescription('');
-    };
-
-    return (
-        <form className={styles.listForm} onSubmit={handleSubmit}>
-            <span className={styles.inputText}>Title:</span>
-            <TextInput type="text" value={title} onChange={e => setTitle(e.target.value)}></TextInput>
-            <span className={styles.inputText}>Description:</span>
-            <TextInput type="text" value={description} onChange={e => setDescription(e.target.value)}></TextInput>
-            <Button>add list</Button>
-        </form>
-    );
+      <span className={styles.inputText}>Description:</span>
+      <TextInput
+        type="text"
+        value={description}
+        onChange={e => setDescription(e.target.value)}>
+      </TextInput>
+      <Button>add list</Button>
+    </form>
+  );
 };
 
 export default ListForm;
