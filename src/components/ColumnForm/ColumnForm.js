@@ -13,7 +13,7 @@ const ColumnForm = (props) => {
 
   const handleSubmit = e => {
       e.preventDefault();
-      dispatch(addColumn({ title, icon, listId: props.listId }));
+      dispatch(addColumn({ title, icon, listId: props.listId, isFavorite: props.isFavorite }));
       setIcon('');
       setTitle('');
       //console.log("add new column");
