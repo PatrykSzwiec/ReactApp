@@ -13,11 +13,25 @@
 }
 
 .button {
-    transform: scale(1.5);
+    transform: scale(1.3);
     background: none;
     border: none;
 }
 
+.buttons {
+    display: flex;
+}
+
 .isActive {
-    color: gold;
+    color: $color-gold;
+}
+
+.activeButton {
+    transform: scale(1.3);
+    background: none;
+    border: none;
+}
+
+.activeButton:active {
+    color: $color-warning;
 }

@@ -14,19 +14,34 @@ const ColumnForm = (props) => {
 
   const handleSubmit = e => {
       e.preventDefault();
+
+      // Check if the title is empty
+      if (title.trim() === '') {
+        return; // Do nothing if the title is empty
+      }
+
       dispatch(addColumn({ title, icon, listId: props.listId, isFavorite: props.isFavorite }));
       setIcon('');
       setTitle('');
-      //console.log("add new column");
   }
 
 return (
       <form onSubmit={handleSubmit} className={styles.columnForm}>
           <span className={styles.inputText}>Title:</span>
-          <input type="text" value={title} onChange={e => setTitle(e.target.value)} className={styles.inputStyle} />
+          <input type="text"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          className={styles.inputStyle}
+          placeholder="Enter title text"
+          />
 
           <span className={styles.inputText}>Icon:</span>
-          <input type="text"  value={icon}  onChange={e => setIcon(e.target.value)} className={styles.inputStyle}/>
+          <input type="text"
+          value={icon}
+          onChange={e => setIcon(e.target.value)}
+          className={styles.inputStyle}
+          placeholder="Enter icon name"
+          />
           <Button>Add column</Button>
       </form>
 );

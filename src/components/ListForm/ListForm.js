@@ -15,6 +15,12 @@ const ListForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        // Check if the title is empty
+        if (title.trim() === '') {
+            return; // Do nothing if the title is empty
+        }
+
         dispatch(addList({ title, description }));
         setTitle('');
         setDescription('');
