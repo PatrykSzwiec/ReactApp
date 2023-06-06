@@ -31,9 +31,6 @@ const List = () => {
     return <Navigate to="/" />;
   }
 
-  const { title, description } = listData;
-
-
   return (
     <div className={styles.list}>
       <header className={styles.header}>
