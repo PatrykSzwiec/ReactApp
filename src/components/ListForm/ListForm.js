@@ -7,18 +7,22 @@ import { useDispatch } from 'react-redux';
 import { addList } from '../../redux/listsRedux';
 
 const ListForm = () => {
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addList({ title, description }));
+
+    // Dispatch the action to add the new list to Redux store
+    dispatch(addList(title, description));
+
+    // Reset the form inputs
     setTitle('');
     setDescription('');
   };
+
 
   return (
     <form className={styles.listForm} onSubmit={handleSubmit}>

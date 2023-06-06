@@ -10,7 +10,7 @@ const Card = props => {
 
     const handleClick = e => {
       e.preventDefault();
-      dispatch(favoriteCardToggler(props.id))
+      dispatch(favoriteCardToggler(props.id));
     }
 
     const removeClick = e => {

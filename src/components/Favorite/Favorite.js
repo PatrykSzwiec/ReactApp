@@ -23,6 +23,7 @@ const Favorite = () => {
           <ul className={styles.favoriteCards}>
             {favoriteCards.map(card => <Card
               key={card.id}
+              id={card.id}
               title={card.title}
               isFavorite={card.isFavorite} />)}
           </ul>

@@ -1,25 +1,25 @@
-import { legacy_createStore as createStore } from 'redux';
-import initialState from './initialState';
+import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import initialState from './initialState';
 
 import listsReducer from './listsRedux';
 import columnsReducer from './columnsRedux';
 import cardsReducer from './cardsRedux';
 import searchStringReducer from './searchStringRedux';
 
-const subreducers = {
+const rootReducer = combineReducers({
   lists: listsReducer,
   columns: columnsReducer,
   cards: cardsReducer,
-  searchString: searchStringReducer
-}
+  searchString: searchStringReducer,
+});
 
-const reducer = combineReducers(subreducers);
-
-const store = createStore(
-  reducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: initialState,
+  middleware: [thunk],
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
 export default store;

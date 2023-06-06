@@ -1,13 +1,29 @@
 import styles from '../Lists/Lists.module.scss';
 import ListForm from "../ListForm/ListForm";
 
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllLists } from '../../redux/listsRedux';
+import { fetchListsSuccess } from '../../redux/listsRedux';
 
 
 const Lists = () => {
-  const lists = useSelector(getAllLists);
+  const lists = useSelector((state) => state.lists);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Fetch the lists data from the server
+    fetch('http://localhost:3011/lists')
+      .then((response) => response.json())
+      .then((data) => {
+        // Dispatch the action to store the fetched lists data in Redux store
+        dispatch(fetchListsSuccess(data));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [dispatch]);
+
   return (
     <section className={styles.lists}>
       <h2 className={styles.heading}>Browse lists</h2>

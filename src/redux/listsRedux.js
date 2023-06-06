@@ -1,23 +1,60 @@
-import shortid from "shortid";
-import createActionName from "../utils/createActionName";
+import shortid from 'shortid';
+import createActionName from '../utils/createActionName';
 
 // selectors
-export const getListById = ({ lists }, listId) => lists.find(list => listId === list.id);
-export const getAllLists = state => state.lists;
+export const getAllLists = (state) => state;
 
-// actions
+// Action types
 const ADD_LIST = createActionName('ADD_LIST');
+const FETCH_LISTS_SUCCESS = createActionName('FETCH_LISTS_SUCCESS');
 
-// action creators
-export const addList = payload => ({ type: ADD_LIST, payload });
-const listsReducer = (statePart = [], action) => {
+// Action creators
+export const addList = (title, description) => {
+  return (dispatch) => {
+    const newList = {
+      title,
+      description,
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newList),
+    };
+
+    fetch('http://localhost:3011/lists', options)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({
+          type: ADD_LIST,
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+};
+
+export const fetchListsSuccess = (lists) => ({
+  type: FETCH_LISTS_SUCCESS,
+  payload: lists,
+});
+
+// Reducer
+const listsReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_LIST:
-      return [...statePart, { ...action.payload, id: shortid() }];
+      return [...state, action.payload];
+
+    case FETCH_LISTS_SUCCESS:
+      return action.payload;
 
     default:
-      return statePart;
+      return state;
   }
-}
+};
 
 export default listsReducer;
